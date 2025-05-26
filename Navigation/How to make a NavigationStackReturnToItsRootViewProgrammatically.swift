@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+@Observable
+class PathStore {
+    var path: [Int] {
+        didSet {
+            save()
+        }
+    }
+    private let savePath = URL.documentsDirectory.appending(path: "SavedPath")
+}
+
 struct DetailView1: View {
     var number: Int
 //    @Binding var path: [Int]
